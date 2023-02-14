@@ -1,9 +1,10 @@
 import cors from 'cors'
 import express from 'express'
-import { config } from '~/config'
-// import { PetsController } from '~/resources/pets/pets.controller'
-import { ExceptionsHandler } from '~/middlewares/exceptions.handler'
-import { UnknownRoutesHandler } from '~/middlewares/unknownRoutes.handler'
+
+import { config } from '@/config'
+import { UsersController } from '@/resources/users/users.controller'
+import { ExceptionsHandler } from '@/middlewares/exceptions.handler'
+import { UnknownRoutesHandler } from '@/middlewares/unknownRoutes.handler'
 
 /**
  * On créé une nouvelle "application" express
@@ -24,9 +25,9 @@ app.use(express.json())
 app.use(cors())
 
 /**
- * Toutes les routes CRUD pour les animaux seronts préfixées par `/pets`
+ * Toutes les routes CRUD pour les Users seronts préfixées par "/users"
  */
-// app.use('/pets', PetsController)
+app.use('/users', UsersController)
 
 /**
  * Homepage (uniquement necessaire pour cette demo)

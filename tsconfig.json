@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "target": "es2017",
+        "target": "ES2021",
         "module": "CommonJS",
-        "lib": ["esnext"],
+        "lib": ["ESNext"],
         "moduleResolution": "node",
         "esModuleInterop": true,
         "strict": true,
@@ -15,8 +15,8 @@
         "outDir": "./dist",
         "strictPropertyInitialization": false,
         "paths": {
-            "~/*": ["./src/*"],
-            "~~/*": ["./*"]
+            "@/*": ["./src/*"],
+            "~/*": ["./*"]
         }
     },
     "ts-node": {

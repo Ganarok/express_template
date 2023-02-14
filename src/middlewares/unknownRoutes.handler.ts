@@ -1,4 +1,4 @@
-import { NotFoundException } from '~/utils/exceptions'
+import { NotFoundException } from '@/utils/exceptions'
 
 /**
  * Pour toutes les autres routes non définies, on retourne une erreur

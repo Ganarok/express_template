@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { ApiException } from '~/types/exceptions'
 
 /**
  * Middleware de gestion globale des erreurs
@@ -10,13 +11,13 @@ import { NextFunction, Request, Response } from 'express'
  *
  * @see https://expressjs.com/en/guide/error-handling.html
  */
-export const ExceptionsHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
-  /**
-   * Voir "The default error handler" dans la doc officielle indiquée plus haut
-   */
-  if (res.headersSent) {
-    return next(err)
-  }
+export const ExceptionsHandler = (err: ApiException, req: Request, res: Response, next: NextFunction) => {
+    /**
+     * Voir "The default error handler" dans la doc officielle indiquée plus haut
+     */
+    if (res.headersSent) {
+        return next(err)
+    }
 
     /**
      * Si c'est le cas, on sait que c'est notre propre erreur
