@@ -7,6 +7,9 @@ const Service = new UsersService()
 
 UsersController.get('/', (req, res) => {
     // GET All users
+    return res
+        .status(200)
+        .json(Service.getUsers({}))
 })
 
 UsersController.post('/', (req, res) => {
