@@ -1,7 +1,10 @@
+
+import 'dotenv/config'
 import cors from 'cors'
 import express from 'express'
+import bodyParser from 'body-parser'
 
-import { config } from '@/config'
+import { appConfig } from '@/config'
 import { UsersController } from '@/resources/users/users.controller'
 import { ExceptionsHandler } from '@/middlewares/exceptions.handler'
 import { UnknownRoutesHandler } from '@/middlewares/unknownRoutes.handler'
@@ -17,6 +20,7 @@ const app = express()
  * @example app.post('/', (req) => req.body.prop)
  */
 app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 /**
  * On dit à Express que l'on souhaite autoriser tous les noms de domaines
@@ -48,4 +52,7 @@ app.use(ExceptionsHandler)
 /**
  * On demande à Express d'ecouter les requêtes sur le port défini dans la config
  */
-app.listen(config.API_PORT, () => console.log(`Server running on port ${config.API_PORT}`))
+app.listen(appConfig.API_PORT, () => {
+    console.log( __dirname, process.env.ENV)
+    console.log(`Server running on port ${appConfig.API_PORT}`)
+})

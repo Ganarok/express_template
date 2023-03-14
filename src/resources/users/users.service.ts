@@ -1,25 +1,36 @@
 import User from '@/models/User'
+import dbConnect from '@/lib/dbConnect'
 
 export class UsersService {
-    getUsers( filters: object ) {
+    async getUsers( filters: object ) {
+        await dbConnect()
         return User
             .find(filters)
             .lean()
     }
+
+    async createUser( data: object ) {
+        await dbConnect()
+        return User
+            .create(data)
+    }
     
-    getUser( filters: object ) {
+    async getUser( filters: object ) {
+        await dbConnect()
         return User
             .findOne(filters)
             .lean()
     }
 
-    getUserbyId( id: string ) {
+    async getUserbyId( id: string ) {
+        await dbConnect()
         return User
             .findById(id)
             .lean()
     }
 
-    updateUserById( id: string, data: object ) {
+    async updateUserById( id: string, data: object ) {
+        await dbConnect()
         return User
             .findByIdAndUpdate(id, data, {
                 new: true,
@@ -27,7 +38,8 @@ export class UsersService {
             })
     }
 
-    deleteUserById( id: string ) {
-        return User.deleteOne(id)
+    async deleteUserById( id: string ) {
+        await dbConnect()
+        return User.deleteOne({ _id: id })
     }
 }
