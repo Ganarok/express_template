@@ -1,4 +1,6 @@
 import { Router } from "express"
+import bcrypt from "bcrypt"
+
 import { UsersService } from "@/resources/users/users.service"
 
 const UsersController = Router()
@@ -18,8 +20,12 @@ UsersController.get('/', async (req, res) => {
 
 UsersController.post('/', async (req, res) => {
     try {
-        if (!req.body)
+        const { body } = req
+
+        if (!body)
             res.status(400).send({ message: 'Missing body' }).end()
+
+        body.password = await bcrypt.hash(body.password, 10)
 
         const result = await Service.createUser(req.body)
 
