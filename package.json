@@ -7,6 +7,7 @@
         "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
         "build": "tsup src/index.ts --format cjs --clean",
         "start": "node dist/index.js",
+        "test": "mocha --exit --require ts-node/register -r tsconfig-paths/register src/tests/*.ts",
         "init:db": "docker build -t localhostdb -q ./db && docker run -it --rm --name \"LocalhostDB\" localhostdb",
         "lint": "eslint . --ext .ts",
         "lint:fix": "eslint . --ext .ts --fix"
@@ -23,6 +24,7 @@
         "@types/chai": "^4.3.4",
         "@types/cors": "^2.8.13",
         "@types/express": "^4.17.17",
+        "@types/mocha": "^10.0.1",
         "@types/node": "^18.13.0",
         "@typescript-eslint/eslint-plugin": "^5.52.0",
         "chai": "^4.3.7",

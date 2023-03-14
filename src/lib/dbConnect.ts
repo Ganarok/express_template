@@ -31,8 +31,6 @@ const dbConnect = async () => {
     }    
 
     if (!cached.promise) {
-        console.log('Connection to database')
-
         const opts = {
             useNewUrlParser: true,
             useUnifiedTopology: true,

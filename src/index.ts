@@ -52,7 +52,9 @@ app.use(ExceptionsHandler)
 /**
  * On demande à Express d'ecouter les requêtes sur le port défini dans la config
  */
-app.listen(appConfig.API_PORT, () => {
+const httpServer = app.listen(appConfig.API_PORT, () => {
     console.log( __dirname, process.env.ENV)
     console.log(`Server running on port ${appConfig.API_PORT}`)
 })
+
+export default httpServer
